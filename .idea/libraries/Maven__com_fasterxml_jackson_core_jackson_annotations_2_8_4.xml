@@ -2,6 +2,7 @@
   <library name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.4">
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.8.4/jackson-annotations-2.8.4.jar!/" />
+      <root url="jar://$USER_HOME$/ojdbc11.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.8.4/jackson-annotations-2.8.4-javadoc.jar!/" />

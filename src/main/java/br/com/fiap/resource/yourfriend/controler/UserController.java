@@ -1,13 +1,12 @@
 package br.com.fiap.resource.yourfriend.controler;
 
 import br.com.fiap.resource.yourfriend.domain.User;
-import br.com.fiap.resource.yourfriend.domain.UserSelect;
 import br.com.fiap.resource.yourfriend.service.UserService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.util.List;
-import java.util.Optional;
+
 
 @Path("/users")
 public class UserController {
@@ -38,13 +37,6 @@ public class UserController {
     }
 
 
-//    @POST
-//    @Consumes("application/json")
-//    public Response register(User user, @Context UriInfo uriInfo){
-//        userService.create(user);
-//        UriBuilder builder = uriInfo.getAbsolutePathBuilder();
-//        builder.path();
-//
-//    };
+
 
 }

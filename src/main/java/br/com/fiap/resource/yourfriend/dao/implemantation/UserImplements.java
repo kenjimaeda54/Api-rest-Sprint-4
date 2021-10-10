@@ -6,9 +6,9 @@ import br.com.fiap.resource.yourfriend.domain.User;
 import br.com.fiap.resource.yourfriend.domain.UserSelect;
 
 import java.util.List;
-import java.util.Optional;
 
-//aqui ficar a logica do banco de dados
+
+
 public class UserImplements implements UserDao {
     UserMapper user = new UserMapper();
 
