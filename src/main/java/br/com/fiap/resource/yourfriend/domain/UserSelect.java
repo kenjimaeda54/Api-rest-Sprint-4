@@ -2,7 +2,7 @@ package br.com.fiap.resource.yourfriend.domain;
 
 public class UserSelect {
     private int id;
-    private String userName;
+    private String nickName;
     private String password;
     private String email;
 
@@ -14,12 +14,12 @@ public class UserSelect {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setNickName(String userName) {
+        this.nickName = userName;
     }
 
     public String getPassword() {

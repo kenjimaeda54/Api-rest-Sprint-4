@@ -8,7 +8,7 @@ public class User {
     private String email;
     private String password;
     private String name;
-    private String userName;
+    private String nickName;
 
     public int getId() {
         return id;
@@ -42,12 +42,12 @@ public class User {
         this.name = name;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setNickName(String userName) {
+        this.nickName = userName;
     }
 
 }

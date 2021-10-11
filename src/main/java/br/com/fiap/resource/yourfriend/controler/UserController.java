@@ -15,7 +15,7 @@ public class UserController {
 
     @GET
     @Produces("application/json")
-    public List<User> listUsers() {
+    public List<User> listUsers()  {
         return service.getAllUser();
     }
 
