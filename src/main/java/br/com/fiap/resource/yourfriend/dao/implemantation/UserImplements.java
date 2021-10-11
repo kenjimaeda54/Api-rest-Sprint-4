@@ -17,9 +17,7 @@ public class UserImplements implements UserDao {
     private static List<User> users;
     ConfigSql config = new ConfigSql();
 
-//    public  UserImplements() {
-//        users = new ArrayList<User>();
-//    }
+
 
     @Override
     public User findByIdUser(Integer integer) {
@@ -28,31 +26,27 @@ public class UserImplements implements UserDao {
 
     @Override
     public List findByEmail(String email) {
-        return user.verifiedByEmail(email);
+        return null;
 
     }
 
     @Override
-    public void insert(User newUser) {
-        try{
-            String sql = "INSERT INTO USERS(USER_NAME,USER_NICKNAME,USER_EMAIL,USER_PASSWORD,USER_ID) VALUES (?,?,?,?)";
+    public void insert(User newUser) throws SQLException {
+            String sql = "INSERT INTO users(user_name,user_nickname,user_email,user_password) VALUES (?,?,?,?)";
             Connection coon = config.getConnection();
             PreparedStatement ps = coon.prepareStatement(sql);
             ps.setString(1,newUser.getName());
             ps.setString(2,newUser.getNickName());
             ps.setString(3,newUser.getEmail());
             ps.setString(4,newUser.getPassword());
-            users.add(newUser);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
+            ps.execute();
+            ps.close();
+            coon.close();
     }
 
     @Override
-    public List<User> getAllUser() {
-        try {
+    public List<User> getAllUser() throws SQLException {
+            users = null;
             String sql = "SELECT * FROM USERS";
             Connection coon = config.getConnection();
             Statement stm = coon.createStatement();
@@ -63,7 +57,7 @@ public class UserImplements implements UserDao {
                     User userQuery = new User();
                     userQuery.setId(rs.getInt("user_id"));
                     userQuery.setNickName(rs.getString("user_nickname"));
-                    userQuery.setPassword(Integer.toString(rs.getInt("user_password")));
+                    userQuery.setPassword(rs.getString("user_password"));
                     userQuery.setEmail(rs.getString("user_email"));
                     userQuery.setName(rs.getString("user_name"));
                     users.add(userQuery);
@@ -71,11 +65,8 @@ public class UserImplements implements UserDao {
             }
             rs.close();
             stm.close();
-            config.getConnection().close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+            coon.close();
 
-        }
         return users;
     }
 

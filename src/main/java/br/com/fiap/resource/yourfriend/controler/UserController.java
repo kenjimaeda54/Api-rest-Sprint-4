@@ -5,6 +5,7 @@ import br.com.fiap.resource.yourfriend.service.UserService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+import java.sql.SQLException;
 import java.util.List;
 
 
@@ -15,28 +16,29 @@ public class UserController {
 
     @GET
     @Produces("application/json")
-    public List<User> listUsers()  {
+    public List<User> listUsers() throws SQLException {
         return service.getAllUser();
     }
 
     @GET
     @Produces("application/json")
     @Path("{email}")
-    public List verifiedByEmail(@PathParam("email")String email) {
-       return service.verifiedByEmail(email);
-    };
+    public List verifiedByEmail(@PathParam("email") String email) {
+        return service.verifiedByEmail(email);
+    }
+
+    ;
 
 
     @POST
     @Consumes("application/json")
-    public Response  add(User user, @Context UriInfo uriInfo){
-      service.insertUser(user);
-      UriBuilder builder = uriInfo.getAbsolutePathBuilder();
-      builder.path(Integer.toString(user.getId()));
-      return  Response.created(builder.build()).build();
+    public Response add(User user, @Context UriInfo uriInfo) throws SQLException {
+        service.insertUser(user);
+        UriBuilder builder = uriInfo.getAbsolutePathBuilder();
+        builder.path(Integer.toString(user.getId()));
+        return Response.created(builder.build()).build();
+
     }
-
-
 
 
 }
