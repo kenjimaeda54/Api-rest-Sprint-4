@@ -16,7 +16,7 @@ public class UserController {
 
     @GET
     @Produces("application/json")
-    public List<User> listUsers() throws SQLException {
+    public List<User> listUsers() {
         return service.getAllUser();
     }
 
@@ -24,20 +24,32 @@ public class UserController {
     @Produces("application/json")
     @Path("{email}")
     public List verifiedByEmail(@PathParam("email") String email) {
-        return service.verifiedByEmail(email);
-    }
+        return   service.verifiedByEmail(email);
 
-    ;
-
+    };
 
     @POST
     @Consumes("application/json")
-    public Response add(User user, @Context UriInfo uriInfo) throws SQLException {
+    public Response add(User user, @Context UriInfo uriInfo) {
         service.insertUser(user);
         UriBuilder builder = uriInfo.getAbsolutePathBuilder();
         builder.path(Integer.toString(user.getId()));
         return Response.created(builder.build()).build();
+    }
 
+    @PUT
+    @Path("{id}")
+    @Consumes("application/json")
+    public  Response edit(User user, @PathParam("id")Integer id){
+        service.edit(user,id);
+        return Response.ok().build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    public  Response delete(@PathParam("id") Integer id ){
+        service.delete(id);
+        return  Response.accepted().build();
     }
 
 
