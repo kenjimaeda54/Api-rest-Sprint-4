@@ -1,16 +1,18 @@
 package br.com.fiap.resource.yourfriend.controler;
 
+
 import br.com.fiap.resource.yourfriend.domain.User;
 import br.com.fiap.resource.yourfriend.service.UserService;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.*;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
+import javax.ws.rs.core.UriInfo;
 import java.util.List;
 
-
-@Path("/users")
-public class UserController {
-
+@Path("/boots")
+public class BootController {
     private UserService service = new UserService();
 
     @GET
@@ -23,9 +25,11 @@ public class UserController {
     @Produces("application/json")
     @Path("{email}")
     public List verifiedByEmail(@PathParam("email") String email) {
-        return   service.verifiedByEmail(email);
+        return service.verifiedByEmail(email);
 
-    };
+    }
+
+    ;
 
     @POST
     @Consumes("application/json")
@@ -39,17 +43,16 @@ public class UserController {
     @PUT
     @Path("{id}")
     @Consumes("application/json")
-    public  Response edit(User user, @PathParam("id")Integer id){
-        service.edit(user,id);
+    public Response edit(User user, @PathParam("id") Integer id) {
+        service.edit(user, id);
         return Response.ok().build();
     }
 
     @DELETE
     @Path("{id}")
-    public  Response delete(@PathParam("id") Integer id ){
+    public Response delete(@PathParam("id") Integer id) {
         service.delete(id);
-        return  Response.accepted().build();
+        return Response.accepted().build();
     }
-
 
 }
