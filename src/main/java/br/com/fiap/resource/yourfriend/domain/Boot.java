@@ -1,6 +1,7 @@
 package br.com.fiap.resource.yourfriend.domain;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 
 @XmlRootElement
 public class Boot {
@@ -8,7 +9,7 @@ public class Boot {
     private String relations = null;
     private String socialMedia = null;
     private String profession = null;
-    private User   user;
+    private List<UserSelect> user;
 
 
     public int getId() {
@@ -43,11 +44,11 @@ public class Boot {
         this.profession = profession;
     }
 
-    public User getUser() {
+    public List<UserSelect> getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(List<UserSelect> user) {
         this.user = user;
     }
 }
