@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BotDao {
     List<Boot> getAllBot();
-    List<Boot> findByIdBot(Integer id);
+    void insertPhrases(Boot boot);
 
      
 }

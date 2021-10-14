@@ -22,7 +22,7 @@ public class UserController {
     @GET
     @Produces("application/json")
     @Path("{email}")
-    public List verifiedByEmail(@PathParam("email") String email) {
+    public List<User> verifiedByEmail(@PathParam("email") String email) {
         return   service.verifiedByEmail(email);
 
     };

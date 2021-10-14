@@ -6,9 +6,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class ConfigSql {
-        public static final String keyUser = "usuario do banco";
-        public  static  final  String KeyPwd = "senha do banco";
-        public  static final  String baseUlr = "link do banco";
+        public static final String keyUser = "seu usario do banco";
+        public  static  final  String KeyPwd = "sua senha do banco";
+        public  static final  String baseUlr = "seu email do banco";
 
         public Connection getConnection() throws SQLException {
                 OracleDataSource ods = new OracleDataSource();

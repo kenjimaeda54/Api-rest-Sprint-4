@@ -7,16 +7,15 @@ import br.com.fiap.resource.yourfriend.domain.Boot;
 import java.util.List;
 
 public class BootService {
-    BootImplements boot = new BootImplements();
-
+    BootImplements bootDao = new BootImplements();
 
 
     public List<Boot> getALlBot() {
-        return boot.getAllBot();
+        return bootDao.getAllBot();
     }
 
-
-
-
+    public  void  insertPhases(Boot boot) {
+        bootDao.insertPhrases(boot);
+    }
 
 }

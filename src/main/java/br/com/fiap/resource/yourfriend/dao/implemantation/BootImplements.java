@@ -4,24 +4,21 @@ import br.com.fiap.resource.yourfriend.ConfigSql;
 import br.com.fiap.resource.yourfriend.dao.BotDao;
 import br.com.fiap.resource.yourfriend.domain.Boot;
 import br.com.fiap.resource.yourfriend.domain.User;
-import br.com.fiap.resource.yourfriend.domain.UserSelect;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class BootImplements implements BotDao {
 
     private static List<Boot> boot;
-    private static List<UserSelect> userSelects;
+    private static List<User> userSelects;
     ConfigSql config = new ConfigSql();
 
 
     @Override
     public List<Boot> getAllBot() {
         boot = null;
-        userSelects = null;
         try {
             String bootQuery = "SELECT * FROM BOOTS";
             String userQuery = "SELECT * FROM USERS WHERE user_id=?";
@@ -37,16 +34,19 @@ public class BootImplements implements BotDao {
                     bootResult.setProfession(rsBot.getString("boot_profession"));
                     bootResult.setSocialMedia(rsBot.getString("boot_medial_social"));
                     bootResult.setRelations(rsBot.getString("boot_relations"));
+                    bootResult.setUserId(rsBot.getInt("user_id"));
                     ps.setInt(1, rsBot.getInt("user_id"));
                     try (ResultSet res = ps.executeQuery()) {
+                        userSelects = null;
                         if (userSelects == null) {
-                            userSelects = new ArrayList<UserSelect>();
+                            userSelects = new ArrayList<User>();
                             while (res.next()) {
-                                UserSelect user = new UserSelect();
+                                User user = new User();
                                 user.setId(res.getInt("user_id"));
-                                user.setEmail(res.getString("user_password"));
+                                user.setEmail(res.getString("user_email"));
                                 user.setNickName(res.getString("user_nickname"));
                                 user.setPassword(res.getString("user_password"));
+                                user.setName(res.getString("user_name"));
                                 userSelects.add(user);
                             }
                         }
@@ -71,7 +71,23 @@ public class BootImplements implements BotDao {
     }
 
     @Override
-    public List<Boot> findByIdBot(Integer id) {
-        return null;
-    }
+    public void insertPhrases(Boot boot) {
+            try {
+                String sql = "INSERT INTO BOOTS(BOOT_RELATIONS,BOOT_MEDIAL_SOCIAL,BOOT_PROFESSION,USER_ID) VALUES(?,?,?,?)";
+                Connection conn = config.getConnection();
+                PreparedStatement ps =conn.prepareStatement(sql);
+                ps.setString(1,boot.getRelations());
+                ps.setString(2,boot.getSocialMedia());
+                ps.setString(3,boot.getProfession());
+                ps.setInt(4,boot.getUserId());
+                ps.execute();
+                conn.close();
+                ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
 }

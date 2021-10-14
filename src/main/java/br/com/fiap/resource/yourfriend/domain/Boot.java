@@ -9,8 +9,16 @@ public class Boot {
     private String relations = null;
     private String socialMedia = null;
     private String profession = null;
-    private List<UserSelect> user;
+    private List<User> user;
+    private  Integer userId;
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public int getId() {
         return id;
@@ -44,11 +52,11 @@ public class Boot {
         this.profession = profession;
     }
 
-    public List<UserSelect> getUser() {
+    public List<User> getUser() {
         return user;
     }
 
-    public void setUser(List<UserSelect> user) {
+    public void setUser(List<User> user) {
         this.user = user;
     }
 }
