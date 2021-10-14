@@ -3,24 +3,24 @@
 ## API com JERSEY,JDBC,ORACLE
 
 ## /USERS
-- Esse enpoint e reponsavel por consultar um usuario,editar,deletar e criar.
+- Esse endpoint é responsável por consultar um usuário, editar, deletar e criar.
 
 
 ### GET
-- Com /users, sem parametro algum e possivel listar todos regsitrados na api. 
+- Com /users, sem parâmetro algum e possível listar todos registrados na API. 
 
 ![Screenshot](get_all.png)
 
 
-- Se passar o parametro  email,retorna uma lista com seu respectivo usuario.<br\>
-Email e campo obrigatorio e unique no banco Oracle,entao a ferramenta sera responsavel por adminsitrar,validacoes de email</br>
-Com retorno do id,email,senha,nickName,password do respectivo usuario,consegue no front-end,facilmente validar os campos.
+- Se passar o parâmetro  email, retorna uma lista com seu respectivo usuário.<br\>
+Email e campo obrigatório é  unique no banco Oracle, então a ferramenta sera responsável por administrar, validações de email</br>
+Com retorno do id, email, senha, nickName, password do respectivo usuário, consegue no front-end, facilmente validar os campos.
 
 ![Screenshot](get_email.png)
 
 ### POST
-- Com o verbo post no endpoint users e possivel criar um usuario,nao precisa inserir o id,ferrametna do Oracle sera responsavel por validar esse campo<br\>
-Os campos email,senha,nickanme,password sao obrigatorios e not null, entao precisa ser utilizado,caso acontrario gerara um erro interno no servidor da Oracle,
+- Com o verbo post no endpoint users e possível criar um usuário, não precisa inserir o id, banco  sera responsável por validar esse campo<br\>
+Os campos email, senha, nickanme, password são obrigatórios e not null, então precisa ser utilizado, caso a contrario gerara um erro interno no servidor da Oracle,
 este erro vai ser mostrado apenas no terminal da API.
 - Exemplo abaixo foi utilizado a ferramenta [postman](https://www.postman.com/downloads/)
 
@@ -28,16 +28,35 @@ este erro vai ser mostrado apenas no terminal da API.
 
 
 ### PUT
-- Com o verbo put e possivel editar o usuario,vale os mesmo conceito para o post,
-- Precisa do id do usuario que deseja editar.
-- Reforncando todos  os campos sao obrigatorios,caso nao inserir algum nao sera ataulizado
-- Exemplo do parametro id:  /users/2.  
+- Com o verbo put e possível editar o usuario, vale o mesmo conceito para o post,
+- Precisa do id do usuário que deseja editar.
+- Reforçando todos  os campos são obrigatórios, caso não inserir algum não sera atualizado.
+- Exemplo do parâmetro id:  /users/2.  
+- Caso não deseja atualizar todos os campos, coloque o valor anterior
 
 ### DELETE
-- Apenas passando o parametro id e possivel deletar o usuario
-- Id do usuario e uma chave estrageira para boot, entao ao deletar u usuario,automaticamente vai ser deletado qualquer frase inserado no campo do boot
-- Nossa relacao e 1 para 1,entao faz sentido deletar as frases inseridas pelo usuario,localizado na tabela boot ao ser deletado um usuario. 
-- Relacao 1 para 1, nosso caso de uso. Nao podemos possuir frases sem possuir usuarios.
+- Apenas passando o parâmetro id e possível deletar o usuário.
+- Id do usuário e uma chave estrangeira para boot, então ao deletar u usuário, automaticamente vai ser deletado qualquer frase inserida no campo do boot.
+- Nossa relação e 1 para 1,então faz sentido deletar as frases inseridas pelo usuário, localizado na tabela boot ao ser deletado um usuário.
+- Relação 1 para 1, nosso caso de uso. Não podemos possuir frases sem possuir usuários.
 
 ## /BOOT
-- Nesse endpoint
+- Nesse endpoint e possível inserir as frases e consultar quais estão registradas.
+
+### GET
+- Com /boots e possível consultar as frases registradas no banco.
+- Recordando que o userId e a chave estrangeira.
+
+
+
+![Screenshot](get_phrases.png)
+
+
+### POST
+- No banco nenhum campo na  tabela boots  são obrigatórios, exceto o user_id, este campo é a chave estrangeira, precisa ser o mesmo id da tabela users no campo id. Por os campos não serem obrigatórios posso fazer atualização desta maneira
+
+
+
+
+![Screenshot](post_boot.png)
+
