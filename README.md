@@ -39,3 +39,5 @@ este erro vai ser mostrado apenas no terminal da API.
 - Nossa relacao e 1 para 1,entao faz sentido deletar as frases inseridas pelo usuario,localizado na tabela boot ao ser deletado um usuario. 
 - Relacao 1 para 1, nosso caso de uso. Nao podemos possuir frases sem possuir usuarios.
 
+## /BOOT
+- Nesse endpoint
