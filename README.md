@@ -3,8 +3,8 @@
 ## API com JERSEY,JDBC,ORACLE
 
 ## /USERS
-- Esse enpoint e reponsavel pelo registro dos usuarios na api
-- Verbos disponiveis nesse endpoint: 
+- Esse enpoint e reponsavel por consultar um usuario,editar,deletar e criar.
+
 
 ### GET
 - Com /users, sem parametro algum e possivel listar todos regsitrados na api. 
