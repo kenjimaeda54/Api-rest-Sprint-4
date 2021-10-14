@@ -22,3 +22,5 @@ Com retorno do id,email,senha,nickName,password do respectivo usuario,consegue n
 - Com o verbo post no endpoint users e possivel criar um usuario,nao precisa inserir o id,ferrametna do Oracle sera responsavel por validar esse campo<br\>
 Os campos email,senha,nickanme,password sao obrigatorios e not null, entao precisa ser utilizado,caso acontrario gerara um erro interno no servidor da Oracle,
 este erro vai ser mostrado apenas no terminal da API.
+
+![Screenshot](create_user.png)
