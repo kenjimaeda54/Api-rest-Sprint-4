@@ -4,6 +4,9 @@ import br.com.fiap.resource.yourfriend.ConfigSql;
 import br.com.fiap.resource.yourfriend.dao.BotDao;
 import br.com.fiap.resource.yourfriend.domain.Boot;
 import br.com.fiap.resource.yourfriend.domain.User;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import oracle.jdbc.OracleType;
+import oracle.sql.json.OracleJsonArray;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -19,6 +22,7 @@ public class BootImplements implements BotDao {
     private static List<Boot> boot;
     private static List<User> userSelects;
     ConfigSql config = new ConfigSql();
+
 
     @Override
     public List<Boot> getAllBot() {
@@ -84,24 +88,33 @@ public class BootImplements implements BotDao {
         return boot;
     }
 
-//    @Override
-//    public void insertPhrases(Boot boot) {
-//            try {
-//                String sql = "INSERT INTO BOOTS(BOOT_RELATIONS,BOOT_MEDIAL_SOCIAL,BOOT_PROFESSION,USER_ID) VALUES(?,?,?,?)";
-//                Connection conn = config.getConnection();
-//                PreparedStatement ps =conn.prepareStatement(sql);
-//                ps.setString(1,boot.getRelations());
-//                ps.setString(2,boot.getSocialMedia());
-//                ps.setString(3,boot.getProfession());
-//                ps.setInt(4,boot.getUserId());
-//                ps.execute();
-//                conn.close();
-//                ps.close();
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//
-//        }
+    @Override
+    public void insertPhrases(Boot boot) {
+            try {
+                String sql = "INSERT INTO BOOTS(BOOT_RELATIONS,BOOT_MEDIAL_SOCIAL,BOOT_PROFESSION,USER_ID) VALUES(?,?,?,?)";
+                Connection conn = config.getConnection();
+                PreparedStatement ps =conn.prepareStatement(sql);
+                    JSONArray jsonRelations = new JSONArray();
+                    String relations = jsonRelations.put(boot.getRelations()).toString();
+                    ps.setString(1, relations);
+                    JSONArray jsonSocialMedia = new JSONArray();
+                    String socialMedia = jsonSocialMedia.put(boot.getSocialMedia()).toString();
+                    ps.setString(2, socialMedia);
+                    JSONArray jsonProfession = new JSONArray();
+                    String profession = jsonProfession.put(boot.getProfession()).toString();
+                    ps.setString(3, profession);
+
+//                ps.setObject(2,boot.getSocialMedia(),OracleType.JSON);
+//                ps.setObject(3,boot.getProfession(),OracleType.JSON);
+                ps.setInt(4,boot.getUserId());
+                ps.execute();
+                conn.close();
+                ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
 
 
 }

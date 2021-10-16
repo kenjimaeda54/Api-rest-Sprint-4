@@ -1,6 +1,6 @@
 package br.com.fiap.resource.yourfriend.service;
 
-import br.com.fiap.resource.yourfriend.dao.BotDao;
+
 import br.com.fiap.resource.yourfriend.dao.implemantation.BootImplements;
 import br.com.fiap.resource.yourfriend.domain.Boot;
 
@@ -14,8 +14,8 @@ public class BootService {
         return bootDao.getAllBot();
     }
 
-//    public  void  insertPhases(Boot boot) {
-//        bootDao.insertPhrases(boot);
-//    }
+    public  void  insertPhases(Boot boot) {
+        bootDao.insertPhrases(boot);
+    }
 
 }
