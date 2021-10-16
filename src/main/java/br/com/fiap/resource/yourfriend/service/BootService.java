@@ -14,8 +14,8 @@ public class BootService {
         return bootDao.getAllBot();
     }
 
-    public  void  insertPhases(Boot boot) {
-        bootDao.insertPhrases(boot);
-    }
+//    public  void  insertPhases(Boot boot) {
+//        bootDao.insertPhrases(boot);
+//    }
 
 }

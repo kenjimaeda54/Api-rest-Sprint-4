@@ -21,14 +21,14 @@ public class BootController {
         return service.getALlBot();
     }
 
-    @POST
-    @Consumes("application/json")
-    public Response insertPhases(Boot boot, @Context UriInfo uriInfo) {
-        service.insertPhases(boot);
-        UriBuilder builder = uriInfo.getAbsolutePathBuilder();
-        builder.path(Integer.toString(boot.getId()));
-        return Response.created(builder.build()).build();
-    }
+//    @POST
+//    @Consumes("application/json")
+//    public Response insertPhases(Boot boot, @Context UriInfo uriInfo) {
+//        service.insertPhases(boot);
+//        UriBuilder builder = uriInfo.getAbsolutePathBuilder();
+//        builder.path(Integer.toString(boot.getId()));
+//        return Response.created(builder.build()).build();
+//    }
 
 
 }
