@@ -49,14 +49,14 @@ este erro vai ser mostrado apenas no terminal da API.
 
 
 
-![Screenshot](get_phrases.png)
+![Screenshot](get_phases.png)
 
 
 ### POST
-- No banco nenhum campo na  tabela boots  são obrigatórios, exceto o user_id, este campo é a chave estrangeira, precisa ser o mesmo id da tabela users no campo id. Por os campos não serem obrigatórios posso fazer atualização desta maneira
+- No banco nenhum campo na  tabela boots  são obrigatórios, exceto o user_id, este campo é a chave estrangeira, precisa ser o mesmo id da tabela users no campo id. Cocar os campos não serem obrigatórios pode fazer criacao  desta maneira
 
 
 
 
-![Screenshot](post_boot.png)
+![Screenshot](post_prashes.png)
 
