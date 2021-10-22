@@ -1,7 +1,7 @@
 package br.com.fiap.resource.yourfriend.domain;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import java.sql.Timestamp;
+
 
 @XmlRootElement
 public class Comments {
