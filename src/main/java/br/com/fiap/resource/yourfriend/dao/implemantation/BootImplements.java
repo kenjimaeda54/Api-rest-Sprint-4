@@ -4,17 +4,12 @@ import br.com.fiap.resource.yourfriend.ConfigSql;
 import br.com.fiap.resource.yourfriend.dao.BotDao;
 import br.com.fiap.resource.yourfriend.domain.Boot;
 import br.com.fiap.resource.yourfriend.domain.User;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import oracle.jdbc.OracleType;
-import oracle.sql.json.OracleJsonArray;
 import org.json.JSONArray;
-import org.json.JSONObject;
+
 
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class BootImplements implements BotDao {

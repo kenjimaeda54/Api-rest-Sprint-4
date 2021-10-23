@@ -33,7 +33,7 @@ public class UserController {
         service.insertUser(user);
         UriBuilder builder = uriInfo.getAbsolutePathBuilder();
         builder.path(Integer.toString(user.getId()));
-        return Response.created(builder.build()).build();
+        return Response.accepted().build();
     }
 
     @PUT
