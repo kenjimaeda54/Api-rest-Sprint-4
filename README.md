@@ -5,6 +5,8 @@
 ## /USERS
 - Esse endpoint é responsável por consultar um usuário, editar, deletar e criar.
 
+## Banco
+- Banco usado foi Oracle SQL, ferramenta SQL developer
 
 ### GET
 - Com /users, sem parâmetro algum e possível listar todos registrados na API. 
